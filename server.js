@@ -5,9 +5,10 @@ import cors from "@fastify/cors";
 import pino from "pino";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
+
 // Configura Pino con pino-pretty
 const logger = pino({
-  level: "info", // Nivel de log: 'info', 'debug', 'error', etc.
+  level: "error", // Nivel de log: 'info', 'debug', 'error', etc.
   transport: {
     target: "pino-pretty",
     options: {
@@ -68,7 +69,7 @@ await server.register(fastifySwaggerUi, {
 
 // Registrar el plugin de MySQL en la instancia principal
 server.register(mysqlPlugin, {
-  connectionString: "mysql://joan:1234@localhost/world",
+  connectionString: `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}`,
   promise: true, // Habilita el uso de promesas
 });
 
