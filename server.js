@@ -69,7 +69,7 @@ await server.register(fastifySwaggerUi, {
 
 // Registrar el plugin de MySQL en la instancia principal
 server.register(mysqlPlugin, {
-  connectionString: `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}`,
+  connectionString: `mysql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
   promise: true, // Habilita el uso de promesas
 });
 
