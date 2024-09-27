@@ -102,7 +102,9 @@ Routes.forEach((route) => {
 
 // Iniciar el servidor
 const port = process.env.PORT || 3010;
-server.listen({ port }, (err, address) => {
+const HOST = "0.0.0.0"; // Esto asegura que escuche en todas las interfaces
+
+server.listen({ port, host: HOST }, (err, address) => {
   if (err) {
     //determinando el tipo de error:
     switch (err.code) {
