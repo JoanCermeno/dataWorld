@@ -5,12 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node --env-file=.env server.js",
+    "start": "node --env-file .env server.js",
     "dev": "node --env-file .env.devlopment --watch server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joan Cermeño",
   "license": "ISC",
   "dependencies": {
     "@fastify/cors": "^9.0.1",

@@ -101,7 +101,7 @@ Routes.forEach((route) => {
 });
 
 // Iniciar el servidor
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3010;
 server.listen({ port }, (err, address) => {
   if (err) {
     //determinando el tipo de error:
@@ -114,12 +114,12 @@ server.listen({ port }, (err, address) => {
         );
         break;
       default:
-        console.log("Algo salio mal pero no se exactamente que");
+        console.log("Error desconocido:");
         break;
     }
-
     console.error(err);
     process.exit(1);
+  } else {
+    console.log(`Server listening at ${address}`);
   }
-  console.log(`Server listening at ${address}`);
 });
