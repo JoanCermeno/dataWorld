@@ -6,23 +6,14 @@ import pino from "pino";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 
-// Configura Pino con pino-pretty
-const logger = pino({
-  level: "error", // Nivel de log: 'info', 'debug', 'error', etc.
+// Configurar Pino
+const pinoConfig = pino({
   transport: {
     target: "pino-pretty",
-    options: {
-      colorize: true, // Agrega colores a los logs
-      translateTime: "yyyy-mm-dd HH:MM:ss", // Formato del timestamp
-      ignore: "pid,hostname", // Campos que no quieres mostrar
-    },
   },
 });
-
 // Crear la instancia principal de Fastify
-const server = fastify({
-  logger,
-});
+const server = fastify({ logger: pinoConfig, logLevel: "info" });
 
 // configurando fastify-swagger
 await server.register(fastifySwagger, {
@@ -38,7 +29,7 @@ await server.register(fastifySwagger, {
       url: "https://swagger.io",
       description: "encuentra mas info ahi",
     },
-    host: "http://127.0.0.1:6969", // Cambia esto si tu API está en un servidor externo
+    host: `${process.env.HOST}:${process.env.PORT}`,
     schemes: ["http"],
     consumes: ["application/json"],
     produces: ["application/json"],
@@ -59,7 +50,10 @@ await server.register(fastifySwaggerUi, {
       next();
     },
   },
-  staticCSP: true,
+  staticCSP: {
+    defaultSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+    styleSrc: ["'self'", "'unsafe-inline'"],
+  },
   transformStaticCSP: (header) => header,
   transformSpecification: (swaggerObject, request, reply) => {
     return swaggerObject;
@@ -79,7 +73,6 @@ await server.register(cors, {
   methods: ["GET", "POST", "PUT", "DELETE"], // permite métodos HTTP específicos
   allowedHeaders: ["content-type", "authorization"],
 });
-//temporal
 
 // Función para obtener una conexión del pool de conexiones y ejecutar una consulta
 export async function query(sql, params = []) {
@@ -102,7 +95,7 @@ Routes.forEach((route) => {
 
 // Iniciar el servidor
 const port = process.env.PORT || 3010;
-const HOST = "0.0.0.0"; // Esto asegura que escuche en todas las interfaces
+const HOST = process.env.HOST;
 
 server.listen({ port, host: HOST }, (err, address) => {
   if (err) {
