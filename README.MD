@@ -1,37 +1,36 @@
-Esto es un proyecto de demostración que permite realizar consultas para obtener datos demográficos detallados de cualquier parte del mundo. A través de esta API, puedes obtener información sobre:
+# 🌍 API World
+
+¡Bienvenido a la API que permite realizar consultas de datos demográficos detallados de cualquier parte del mundo! 🌐 A través de esta API, podrás obtener información sobre:
 
 - **Países**: Todos los países del mundo.
-- **Regiones o Estados**: Todas las regiones o estados de un país específico.
-- **Ciudades**: Las ciudades dentro de una región o estado, incluyendo la latitud y longitud precisa de cada ciudad.
+- **Regiones o Estados**: Las regiones o estados de cada país.
+- **Ciudades**: Las ciudades dentro de una región o estado, incluyendo su latitud y longitud.
 
-## Características
+## ✨ Características
 
-- **Acceso Rápido y Sencillo**: Obtén datos demográficos de manera fácil y sin complicaciones.
-- **Datos Geográficos Precisos**: Incluye coordenadas geográficas para ciudades, lo que permite integraciones con mapas u otras aplicaciones geoespaciales.
-- **100% Gratuito**: Este servicio es completamente gratuito, ideal para desarrolladores que necesiten datos demográficos para sus aplicaciones.
+- 🔍 **Acceso Rápido y Sencillo**: Consulta datos demográficos fácilmente.
+- 📍 **Datos Geográficos Precisos**: Incluye coordenadas para integraciones con mapas.
+- 💸 **100% Gratuito**: Ideal para desarrolladores que necesiten datos demográficos sin costo.
 
-## Estado del Proyecto
+## 🚀 Estado del Proyecto
 
-En desarrollo, uso de **Fastify** para la API backend. La versión anterior del proyecto no estaba bien optimizada, por lo que esta nueva implementación busca mejorar el rendimiento y la usabilidad.
+El proyecto se encuentra **en desarrollo** y utiliza **Fastify** como framework para la API. Esta nueva versión está optimizada para mejorar el rendimiento y la usabilidad.
 
-## Tecnologías Utilizadas
+## 🛠️ Tecnologías Utilizadas
 
 - **Backend**: [Fastify](https://www.fastify.io/)
 
-## Instalación y Uso
+## 📝 Instalación y Uso
 
-npm install
+1. Descarga el sql con los datos en crudo, y configura el fichero .env con los datos de conexion a tu base de datos, en el repo hay uno de ejemplo llamado .env.development
+2. Instala las dependencias:
 
-- configura tu archivo .env
+   ```bash
+   npm install
+   npm start
 
-npm start
+## 🤝 Contribuciones
+¡Todas las contribuciones son bienvenidas! Si encuentras algún error o quieres añadir mejoras, siéntete libre de abrir un issue o un pull request.
 
-## Contribuciones
-
-Dado que el proyecto está en una fase inicial, cualquier sugerencia, reporte de bugs o contribución es más que bienvenida. ¡Siéntete libre de abrir un issue o un pull request!
-
-## Licencia
-
-Este proyecto está bajo la [MIT License](./LICENSE).
-
----
+## 📜 Licencia
+Este proyecto está bajo la licencia MIT. ¡Es software libre, úsalo y compártelo! 👐
