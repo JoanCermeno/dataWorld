@@ -6,14 +6,8 @@ import pino from "pino";
 import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 
-// Configurar Pino
-const pinoConfig = pino({
-  transport: {
-    target: "pino-pretty",
-  },
-});
 // Crear la instancia principal de Fastify
-const server = fastify({ logger: pinoConfig, logLevel: "info" });
+const server = fastify({ logger: true });
 
 // configurando fastify-swagger
 await server.register(fastifySwagger, {
@@ -27,10 +21,9 @@ await server.register(fastifySwagger, {
     },
     externalDocs: {
       url: "https://swagger.io",
-      description: "encuentra mas info ahi",
+      description: "encuentra más info ahí",
     },
-    host: `${process.env.HOST}:${process.env.PORT}`,
-    schemes: ["http"],
+    schemes: ["https"], // Cambia a "https" para producción
     consumes: ["application/json"],
     produces: ["application/json"],
   },
