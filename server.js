@@ -7,7 +7,7 @@ import fastifySwagger from "@fastify/swagger";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 
 // Crear la instancia principal de Fastify
-const server = fastify({ logger: true });
+const server = fastify();
 
 // configurando fastify-swagger
 await server.register(fastifySwagger, {
@@ -43,10 +43,7 @@ await server.register(fastifySwaggerUi, {
       next();
     },
   },
-  staticCSP: {
-    defaultSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-    styleSrc: ["'self'", "'unsafe-inline'"],
-  },
+  staticCSP: false,
   transformStaticCSP: (header) => header,
   transformSpecification: (swaggerObject, request, reply) => {
     return swaggerObject;

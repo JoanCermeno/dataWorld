@@ -77,6 +77,7 @@ export default [
               id: { type: "integer" },
               name: { type: "string" },
               code: { type: "string" },
+              country_id: { type: "string" },
             },
           },
         },
